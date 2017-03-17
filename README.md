@@ -119,11 +119,53 @@ Use [`rustup`](https://rustup.rs/) to install Rust stable and nightly:
 Running the tests on stable works fine:
 ```sh
 $ cargo clean
-$ cargo +stable test
+$ cargo +stable test -vv --lib
+       Fresh gcc v0.3.45
+       Fresh pkg-config v0.3.9
+       Fresh libc v0.2.21
+       Fresh filetime v0.1.10
+       Fresh xattr v0.1.11
+       Fresh tar v0.4.10
+       Fresh miniz-sys v0.1.9
+       Fresh flate2 v0.2.17
+       Fresh libz-sys v1.0.13
+       Fresh curl-sys v0.3.10
+       Fresh curl v0.4.6
+   Compiling tfsys v0.1.0 (file://${HOME}/tfsys.git)
+     Running `rustc --crate-name tfsys src/lib.rs -g --test -C metadata=bad6671e460bf032 -C extra-filename=-bad6671e460bf032 --out-dir ${HOME}/tfsys.git/target/debug/deps --emit=dep-info,link -L dependency=${HOME}/tfsys.git/target/debug/deps -L ${HOME}/tfsys.git/target/libtensorflow-cpu-darwin-x86_64-1.0.0/lib -l dylib=tensorflow`
+    Finished debug [unoptimized + debuginfo] target(s) in 0.43 secs
+     Running `${HOME}/tfsys.git/target/debug/deps/tfsys-bad6671e460bf032`
+
+running 1 test
+test tests::it_works ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured
 ```
 
 But not on nightly:
 ```sh
 $ cargo clean
-$ cargo +nightly test
+$ cargo +nightly test -vv --lib
+       Fresh libc v0.2.21
+       Fresh gcc v0.3.45
+       Fresh pkg-config v0.3.9
+       Fresh xattr v0.1.11
+       Fresh filetime v0.1.10
+       Fresh tar v0.4.10
+       Fresh miniz-sys v0.1.9
+       Fresh libz-sys v1.0.13
+       Fresh flate2 v0.2.17
+       Fresh curl-sys v0.3.10
+       Fresh curl v0.4.6
+   Compiling tfsys v0.1.0 (file://${HOME}/tfsys.git)
+     Running `rustc --crate-name tfsys src/lib.rs --emit=dep-info,link -C debuginfo=2 --test -C metadata=0d818779fed6bac8 -C extra-filename=-0d818779fed6bac8 --out-dir ${HOME}/tfsys.git/target/debug/deps -L dependency=${HOME}/tfsys.git/target/debug/deps -L ${HOME}/tfsys.git/target/libtensorflow-cpu-darwin-x86_64-1.0.0/lib -l dylib=tensorflow`
+    Finished dev [unoptimized + debuginfo] target(s) in 0.43 secs
+     Running `${HOME}/tfsys.git/target/debug/deps/tfsys-0d818779fed6bac8`
+dyld: Library not loaded: bazel-out/local-opt/bin/tensorflow/libtensorflow.so
+  Referenced from: ${HOME}/tfsys.git/target/debug/deps/tfsys-0d818779fed6bac8
+  Reason: image not found
+error: process didn't exit successfully: `${HOME}/tfsys.git/target/debug/deps/tfsys-0d818779fed6bac8` (signal: 6, SIGABRT: process abort signal)
+
+Caused by:
+  process didn't exit successfully: `${HOME}/tfsys.git/target/debug/deps/tfsys-0d818779fed6bac8` (signal: 6, SIGABRT: process abort signal)
 ```
