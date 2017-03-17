@@ -1,6 +1,5 @@
 extern crate curl;
 extern crate flate2;
-extern crate semver;
 extern crate tar;
 
 use std::fs::File;
