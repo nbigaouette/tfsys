@@ -1,0 +1,6 @@
+[package]
+name = "tfsys"
+version = "0.1.0"
+authors = ["Nicolas Bigaouette <nbigaouette@gmail.com>"]
+
+[dependencies]
