@@ -1,6 +1,5 @@
 extern crate curl;
 extern crate flate2;
-extern crate pkg_config;
 extern crate semver;
 extern crate tar;
 
@@ -29,11 +28,6 @@ macro_rules! log {
 macro_rules! log_var(($var:ident) => (log!(concat!(stringify!($var), " = {:?}"), $var)));
 
 fn main() {
-    if pkg_config::find_library(LIBRARY).is_ok() {
-        log!("Returning early because {} was already found", LIBRARY);
-        return;
-    }
-
     install_prebuilt();
 }
 
