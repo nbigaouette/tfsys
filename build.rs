@@ -52,7 +52,7 @@ fn install_prebuilt() {
         "macos" => "darwin",
         x => x,
     };
-    let proc_type = if cfg!(feature = "tensorflow_gpu") {"gpu"} else {"cpu"};
+    let proc_type = "cpu";
     let binary_url = format!(
         "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-{}-{}-{}-{}.tar.gz",
         proc_type, os, env::consts::ARCH, VERSION);
