@@ -2,6 +2,8 @@
 
 This is a minimal, complete and verifiable example exposing a problem with Rust's cargo nightly and Rust's tensorflow bindings.
 
+The problem was reported in [cargo issue 3838](https://github.com/rust-lang/cargo/issues/3838).
+
 ## Actual Problem
 
 The [TensorFlow Rust binding](https://github.com/tensorflow/rust) crate contains an low-level FFI crate named `tensorflow-sys`, exposing TensorFlow's unsage C API in Rust.
