@@ -169,3 +169,6 @@ error: process didn't exit successfully: `${HOME}/tfsys.git/target/debug/deps/tf
 Caused by:
   process didn't exit successfully: `${HOME}/tfsys.git/target/debug/deps/tfsys-0d818779fed6bac8` (signal: 6, SIGABRT: process abort signal)
 ```
+
+## License
+This project is licensed under the terms of the [Apache 2.0 license](https://github.com/nbigaouette/tfsys/blob/master/LICENSE) (same license as the Rust `tensorflow` and `tensorflow-sys` crates).
