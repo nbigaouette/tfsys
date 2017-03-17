@@ -7,7 +7,6 @@ build = "build.rs"
 links = "tensorflow"
 
 [dependencies]
-libc = "0.2"
 
 [build-dependencies]
 curl = "0.4"
